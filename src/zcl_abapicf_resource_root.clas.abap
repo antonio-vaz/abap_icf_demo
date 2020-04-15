@@ -36,6 +36,10 @@ CLASS ZCL_ABAPICF_RESOURCE_ROOT IMPLEMENTATION.
     " **********************************************************************
     " build body payload json string
     DATA(json_output) = /ui2/cl_json=>serialize( EXPORTING data = payload pretty_name = /ui2/cl_json=>pretty_mode-low_case ).
+" force a bigger payload just to test compression (needs to be enabled in sicf
+*    DO 5 TIMES.
+*      CONCATENATE json_output json_output into json_output SEPARATED BY space.
+*    ENDDO.
 
     " **********************************************************************
     " build body payload
